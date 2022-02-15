@@ -10,11 +10,16 @@ from datetime import datetime
 from starlette.middleware.cors import CORSMiddleware
 
 import os
-from boto.s3.connection import S3Connection
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 # SQLAlchemy specific code, as with any other app
 # DATABASE_URL = "sqlite:///./test.db"
-DATABASE_URL = S3Connection(os.environ['DATABASE_URL'])
+DATABASE_URL = os.environ.get("DATABASE_URL")
+print(DATABASE_URL)
 
 database = databases.Database(DATABASE_URL)
 
