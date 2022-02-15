@@ -18,7 +18,7 @@ load_dotenv(dotenv_path)
 
 # SQLAlchemy specific code, as with any other app
 # DATABASE_URL = "sqlite:///./test.db"
-DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 database = databases.Database(DATABASE_URL)
 
