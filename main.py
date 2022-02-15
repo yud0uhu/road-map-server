@@ -15,7 +15,7 @@ load_dotenv()
 
 # SQLAlchemy specific code, as with any other app
 # DATABASE_URL = "sqlite:///./test.db"
-DATABASE_URL = os.getenv('postgresql://osxhgvdnwkrrsx:03aa7fc38ea3842c590df8e451a160fc593eb770287a3440ff005797b79b1125@ec2-34-230-110-100.compute-1.amazonaws.com:5432/d9393lnt8ndre9')
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 database = databases.Database(DATABASE_URL)
 
