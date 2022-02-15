@@ -10,10 +10,12 @@ from datetime import datetime
 from starlette.middleware.cors import CORSMiddleware
 
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # SQLAlchemy specific code, as with any other app
 # DATABASE_URL = "sqlite:///./test.db"
-DATABASE_URL = os.environ['DATABASE_URL']
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 database = databases.Database(DATABASE_URL)
 
