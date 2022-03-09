@@ -37,8 +37,8 @@ ledgers = sqlalchemy.Table(
     sqlalchemy.Column("secondary_category", sqlalchemy.String),
     sqlalchemy.Column("contents", sqlalchemy.String),
     sqlalchemy.Column("answer", sqlalchemy.String),
-    sqlalchemy.Column("latitude", Float),
-    sqlalchemy.Column("longitude", Float),
+    sqlalchemy.Column("latitude", sqlalchemy.String),
+    sqlalchemy.Column("longitude", sqlalchemy.String),
     # mesh = relationship("mesh")
 )
 
@@ -67,8 +67,8 @@ class LedgerIn(BaseModel):
     secondry_category: str
     contents: str
     answer: str
-    latitude: Float
-    longitude: Float
+    latitude: str
+    longitude: str
 
 
 class Ledger(BaseModel):
@@ -78,8 +78,8 @@ class Ledger(BaseModel):
     secondry_category: str
     contents: str
     answer: str
-    latitude: Float
-    longitude: Float
+    latitude: str
+    longitude: str
 
 
 # class MeshIn(BaseModel):
@@ -139,8 +139,8 @@ async def read_ledgers(id: str):
                     "secondry_category": r[3],
                     "contents": r[4],
                     "answer": r[5],
-                    "latitude": str(r[6]),
-                    "longitud": str(r[7]),
+                    "latitude": r[6],
+                    "longitud": r[7],
                     })
 
 # @app.post("/ledger/", response_model=Ledger)
