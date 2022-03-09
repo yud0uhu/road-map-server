@@ -36,7 +36,7 @@ ledgers = sqlalchemy.Table(
     sqlalchemy.Column("primary_category", sqlalchemy.String),
     sqlalchemy.Column("secondary_category", sqlalchemy.String),
     sqlalchemy.Column("contents", sqlalchemy.String),
-    sqlalchemy.Column("answer", sqlalchemy.String),
+    # sqlalchemy.Column("answer", sqlalchemy.String),
     sqlalchemy.Column("latitude", Float,),
     sqlalchemy.Column("longitude", Float),
     # mesh = relationship("mesh")
@@ -66,7 +66,7 @@ class LedgerIn(BaseModel):
     primary_category: str
     secondry_category: str
     contents: str
-    answer: str
+    # answer: str
     latitude: Float
     longitude: Float
 
@@ -77,7 +77,7 @@ class Ledger(BaseModel):
     primary_category: str
     secondry_category: str
     contents: str
-    answer: str
+    # answer: str
     latitude: Float
     longitude: Float
 
