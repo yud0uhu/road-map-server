@@ -139,8 +139,8 @@ async def read_ledgers(id: str):
                     "secondry_category": r[3],
                     "contents": r[4],
                     "answer": r[5],
-                    "latitude": r[6],
-                    "longitud": r[7]
+                    "latitude": str(r[6]),
+                    "longitud": str(r[7]),
                     })
 
 # @app.post("/ledger/", response_model=Ledger)
