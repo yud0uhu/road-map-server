@@ -8,6 +8,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from datetime import datetime
 from starlette.middleware.cors import CORSMiddleware
+from sqlalchemy.orm import relationship
 
 import os
 from os.path import join, dirname
@@ -27,7 +28,7 @@ database = databases.Database(DATABASE_URL)
 metadata = sqlalchemy.MetaData()
 
 ledgers = sqlalchemy.Table(
-    "ledger",
+    'ledger',
     metadata,
     sqlalchemy.Column("order_no", sqlalchemy.String, primary_key=True),
     sqlalchemy.Column("datatime", sqlalchemy.DateTime),
@@ -35,7 +36,20 @@ ledgers = sqlalchemy.Table(
     sqlalchemy.Column("secondary_category", sqlalchemy.String),
     sqlalchemy.Column("contents", sqlalchemy.String),
     sqlalchemy.Column("answer", sqlalchemy.String),
+    sqlalchemy.Column("latitude", sqlalchemy.String,),
+    sqlalchemy.Column("longitude", sqlalchemy.String),
+    # mesh = relationship("mesh")
 )
+
+# meshs = sqlalchemy.Table(
+#     'mesh',
+#     metadata,
+#     sqlalchemy.Column("latitude", sqlalchemy.String,),
+#     sqlalchemy.Column("longitude", sqlalchemy.String),
+#     sqlalchemy.Column('orde_no', sqlalchemy.String), \
+#                   ForeignKey('ledger.order_no')
+#     ledger = relationship("ledger")
+# )
 
 
 engine = sqlalchemy.create_engine(
@@ -61,6 +75,19 @@ class Ledger(BaseModel):
     secondry_category: str
     contents: str
     answer: str
+
+
+# class MeshIn(BaseModel):
+#     order_no: str
+#     latitude: str
+#     longitude: str
+
+
+# class Mesh(BaseModel):
+#     order_no: str
+#     latitude: str
+#     longitude: str
+
 
 
 app = FastAPI()
@@ -106,7 +133,8 @@ async def read_ledgers(id: str):
                     "primary_category": r[2],
                     "secondry_category": r[3],
                     "contents": r[4],
-                    "answer": r[5]
+                    "latitude": r[5],
+                    "longitud": r[6]
                     })
 
 # @app.post("/ledger/", response_model=Ledger)
