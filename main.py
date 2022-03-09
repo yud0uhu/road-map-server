@@ -7,6 +7,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from datetime import datetime
+from sqlalchemy.types import Float
 from starlette.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import relationship
 
@@ -36,8 +37,8 @@ ledgers = sqlalchemy.Table(
     sqlalchemy.Column("secondary_category", sqlalchemy.String),
     sqlalchemy.Column("contents", sqlalchemy.String),
     sqlalchemy.Column("answer", sqlalchemy.String),
-    sqlalchemy.Column("latitude", sqlalchemy.String,),
-    sqlalchemy.Column("longitude", sqlalchemy.String),
+    sqlalchemy.Column("latitude", Float,),
+    sqlalchemy.Column("longitude", Float),
     # mesh = relationship("mesh")
 )
 
@@ -66,6 +67,8 @@ class LedgerIn(BaseModel):
     secondry_category: str
     contents: str
     answer: str
+    latitude: Float
+    longitude: Float
 
 
 class Ledger(BaseModel):
@@ -75,6 +78,8 @@ class Ledger(BaseModel):
     secondry_category: str
     contents: str
     answer: str
+    latitude: Float
+    longitude: Float
 
 
 # class MeshIn(BaseModel):
