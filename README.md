@@ -5,11 +5,12 @@
 [テーブル定義](https://drive.google.com/file/d/1SBlcqxVVnBg7FhLkjSUIEGMuT07aD1bL/view?usp=sharing)  
 [フロントエンドリポジトリ](https://github.com/yud0uhu/road-map)
 
-## CSV ファイルを整形する
+## CSV ファイルの整形とインポート
 
 ```sh
-$ \copy ledger from 'CSVファイルのパス' with CSV;
 $ sed -i -e "s/,\$//" 'CSVファイルのパス'
+# ledgerテーブルにcsvファイルをインポートする
+$ \copy ledger from 'CSVファイルのパス' with CSV;
 ```
 
 ## 実行コマンド
